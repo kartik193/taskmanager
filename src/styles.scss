@@ -1,1 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+.cursor_pointer {
+  cursor: pointer;
+}
+.not_allowed {
+  cursor: not-allowed;
+}
+.btn-invoice {
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 17px;
+  border: 0;
+  font-family: cursive;
+  text-transform: capitalize;
+  background: transparent linear-gradient(107deg, #3f6a0c 0%, #8cc327 100%) 0%
+    0% no-repeat padding-box;
+  border-radius: 8px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+.heigth {
+  height: -webkit-fill-available;
+}
+.web_BackColor {
+  background: transparent linear-gradient(107deg, #3f6a0c 0%, #8cc327 100%) 0%
+    0% no-repeat padding-box;
+}
+.ui_parent .heading_parent {
+  background: #8cc327;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  .heading_text {
+    font-size: 25px;
+  }
+}

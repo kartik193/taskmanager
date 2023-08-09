@@ -1,0 +1,45 @@
+<div class="row mx-auto mt-5 border rounded-5 ui_parent">
+    <div class="col-12 mx-auto d-flex py-2  align-items-center heading_parent">
+        <a class="cursor_pointer heading_text text-white" (click)="changeRoute()"><i class="bi bi-arrow-left"></i></a>
+        <p class="mb-0 mx-auto text-capitalize text-white heading_text"
+            [innerHTML]="this.paramsId==undefined?'Create Task List':'edit Task List'"></p>
+    </div>
+    <div class="col-md-8 my-4 mx-auto">
+        <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-12 mb-2">
+                    <label for="title" class="mb-1">Title <span class="text-danger">*</span> </label>
+                    <input type="email" class="form-control" id="title" placeholder="Enter Title"
+                        formControlName="title">
+                </div>
+                <div class="col-12 mb-2">
+                    <label for="Decription" class="mb-1">Decription <span class="text-danger">*</span> </label>
+                    <textarea type="text" class="form-control" id="Decription" placeholder="Enter Decription"
+                        formControlName="Decription" rows="3"></textarea>
+                </div>
+                <div class="col-12 mb-2">
+                    <label for="Date" class="mb-1">Date <span class="text-danger">*</span> </label>
+                    <input type="date" [attr.min]="currentDate" class="form-control" id="Date" placeholder="Enter Date"
+                        formControlName="date">
+                </div>
+
+                <div class="col-12 mt-2">
+                    <button class="btn-invoice" [disabled]="taskForm.invalid"
+                        [ngClass]="taskForm.invalid?'not_allowed':'cursor_pointer'"
+                        [innerHTML]="this.paramsId==undefined?'Submit':'edit'">Submit</button>
+                </div>
+                <div class="col-12 mt-3" *ngIf="statusObj?.arrayLength.length>=1 && statusObj?.createMode">
+                    <div class="alert alert-success" role="alert">
+                        This Task Info <a class="alert-link">success created</a>
+                    </div>
+                </div>
+                <div class="col-12 mt-3" *ngIf="statusObj?.arrayLength.length>=1 && statusObj?.editMode ">
+                    <div class="alert alert-success" role="alert">
+                        This Task Info <a class="alert-link">success edit</a>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

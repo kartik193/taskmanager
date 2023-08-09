@@ -1,0 +1,25 @@
+<div class="row mt-5 border rounded-5 ui_parent">
+    <div class="col-12 mx-auto d-flex py-2  align-items-center heading_parent">
+        <a (click)="changeRoute()" class="cursor_pointer heading_text text-white"><i class="bi bi-arrow-left"></i></a>
+        <p class="mb-0 mx-auto text-capitalize text-white heading_text">Task Detail</p>
+    </div>
+    <div class="col-12 my-4 mx-auto">
+        <table class="table table-hover table-bordered">
+            <thead >
+                <tr>
+                    <th><label>title</label>
+                    </th>
+                    <th><label>description</label></th>
+                    <th><label>due date</label></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{deatilsData?.title}}</td>
+                    <td>{{deatilsData?.Decription}}</td>
+                    <td>{{deatilsData?.date| date :'longDate'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

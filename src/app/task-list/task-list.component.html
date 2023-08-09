@@ -1,0 +1,73 @@
+<div class="row mx-auto mt-5">
+    <div class="col-12">
+        <div class="row mb-3 d-flex align-items-center mx-auto">
+            <div class="col-md-4 d-flex align-items-center ms-md-auto mx-auto me-md-3 px-0">
+                <div class="row mx-auto w-100">
+                    <div class="d-flex align-items-cener flex-column" [ngClass]="today==undefined?'col-md-12':'col-md-8'">
+                        <span class="text-dark text-start">Apply Filter</span>
+                        <input type="date" class="form-control" [attr.min]="currentDate" [(ngModel)]="today"
+                            (change)="getFilterDate()" class="form-control" id="Date" placeholder="Enter Date">
+                    </div>
+                    <div class="col-md-4 mt-3 mt-md-0 d-flex align-items-center" *ngIf="today!=undefined">
+                        <button *ngIf="today!=undefined"
+                            class="btn border w-100 btn-invoice text-truncat text-capitalize"
+                            (click)="getTaskData()">
+                            clear filter</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-auto mt-3 mt-md-0 px-0">
+                <button (click)="changeRoute('home/create-task','i')" class="btn-invoice w-100 btn">create task</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 overflow_auto">
+        <table class="table table-hover table-bordered">
+            <thead class="">
+                <tr>
+                    <th class="text-truncate text-capitalize text-white"><label>S.No</label></th>
+                    <th class="text-truncate text-capitalize text-white"><label>Title <i
+                                *ngIf="!showIcon && taskData.length>1"
+                                class="bi cursor_pointer bi-arrow-up-short h4 m-0"
+                                (click)="shortTitle(1);showIcon=true"></i>
+                            <i *ngIf="showIcon  && taskData.length>1"
+                                class="bi cursor_pointer bi-arrow-down-short h4 m-0"
+                                (click)="shortTitle(-1);showIcon=false"></i>
+                        </label>
+                    </th>
+                    <th class="text-truncate text-capitalize text-white"><label>Description</label></th>
+                    <th class="text-truncate text-capitalize text-white"><label>Due date</label></th>
+                    <th class="text-truncate text-capitalize text-white"><label>Action</label></th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngIf="dataFindStatus?.length!=0">
+                    <tr *ngFor="let task of taskData;let i=index">
+                        <td class="table_bodyFont">{{i+1}}</td>
+                        <td class="table_bodyFont">{{task?.title}}</td>
+                        <td class="table_bodyFont">{{task?.Decription}}</td>
+                        <td class="table_bodyFont">{{task?.date| date :'longDate'}}</td>
+                        <td class="table_bodyFont" data-label="Payment"><button class="btn-invoice btn me-1"
+                                (click)="changeRoute('home/details-task',i)"><i class="bi bi-eye-fill"></i></button>
+                            <button class="btn-invoice btn ms-1" (click)="editTask(i)"> <i
+                                    class="bi bi-pencil-square"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+        <div class="row" *ngIf="dataFindStatus?.length==0">
+            <div class="col-12 text-center">
+                <h4 class="text-danger m-0">No Data Found</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #loginpopup>
+    <div class="modal-header">
+        <h1>hello</h1>
+    </div>
+</ng-template>
